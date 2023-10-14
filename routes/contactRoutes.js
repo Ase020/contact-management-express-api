@@ -7,8 +7,12 @@ import {
   updateContact,
   deleteContact,
 } from "../controller/contactController.js";
+import { validateToken } from "../middleware/validTokenHandler.js";
 
 const router = express.Router();
+
+// validate Token
+router.use(validateToken);
 
 // Get all contacts
 router.get("/", getContacts);

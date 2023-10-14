@@ -4,6 +4,7 @@ import {
   loginUser,
   registerUser,
 } from "../controller/userController.js";
+import { validateToken } from "../middleware/validTokenHandler.js";
 
 const router = express.Router();
 
@@ -14,6 +15,6 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 
 // Current User
-router.get("/current", currentUser);
+router.get("/current", validateToken, currentUser);
 
 export default router;
